@@ -110,7 +110,7 @@ class FaceNet:
         s = self.metadata['image_size']
         images = [cv2.resize(image, (s, s)) for image in images]
         X = np.float32([self._normalize(image) for image in images])
-        embeddings = self.model(X)
+        embeddings = self.model(X, training=False)
         return embeddings
 
     def compute_distance(self, embedding1, embedding2):
